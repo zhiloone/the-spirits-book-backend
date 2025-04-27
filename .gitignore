@@ -1,0 +1,23 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.env/
+
+# .env files
+*.env
+
+# IDE files (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Python virtual environment
+*.venv/
+
+# Ruff cache
+.ruff_cache/
