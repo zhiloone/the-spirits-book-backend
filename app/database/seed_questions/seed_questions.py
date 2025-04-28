@@ -11,8 +11,9 @@ ALL_QUESTION_BATCHES = [QUESTIONS_BATCH_01]
 
 
 async def seed_questions():
-    await MongoDBClient.check_connection()
-    collection = MongoDBClient.get_database()["questions"]
+    client = MongoDBClient()
+    await client.check_connection()
+    collection = client.get_database()["questions"]
 
     for batch in ALL_QUESTION_BATCHES:
         for question_data in batch:
