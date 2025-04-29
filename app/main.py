@@ -8,6 +8,16 @@ from app.settings import settings
 
 app = FastAPI(root_path="/api/v1")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://the-spirits-book-frontend.s3-website.us-east-2.amazonaws.com"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 if settings.ENVIRONMENT != "production":
     app.add_middleware(
         CORSMiddleware,
