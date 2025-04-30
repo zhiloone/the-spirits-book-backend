@@ -10,7 +10,7 @@ app = FastAPI(root_path="/api/v1")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://olivrodosespiritos.zhiloone.com.br/"],
+    allow_origins=["https://olivrodosespiritos.zhiloone.com.br"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
