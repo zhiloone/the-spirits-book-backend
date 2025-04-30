@@ -5,3 +5,4 @@ services:
       - PYTHONUNBUFFERED=1 # Ensures logs are printed in real time
     ports:
       - "8000:8000"
+    restart: always
