@@ -1,34 +1,7 @@
 services:
-  # MongoDB service
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=adminpassword
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
-    networks:
-      - app-network
-
   app:
     build: .
     environment:
-      - MONGO_URI=mongodb://admin:adminpassword@mongodb:27017
       - PYTHONUNBUFFERED=1 # Ensures logs are printed in real time
     ports:
       - "8000:8000"
-    depends_on:
-      - mongodb
-    networks:
-      - app-network
-
-volumes:
-  mongodb_data:
-
-
-networks:
-  app-network:
-    driver: bridge

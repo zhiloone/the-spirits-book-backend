@@ -1,9 +1,6 @@
 up:
 	docker compose up --build -d
 
-up-db:
-	docker-compose up --build -d mongodb
-
 down:
 	docker compose down -v
 
