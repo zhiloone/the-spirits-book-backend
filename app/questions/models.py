@@ -7,18 +7,33 @@ def default_factory_now_tz():
     return datetime.now(timezone.utc)
 
 
-class QuestionTextModel(BaseModel):
-    letter: Optional[str] = Field(example="a", default=None)
-    question: Optional[list[str]] = Field(
-        example=["Que definição podeis dar da matéria?"], default=None
-    )
-    answer: list[str] = Field(
+# TODO: adapt routes to use this updated model (ref question 1009)
+class AnswerModel(BaseModel):
+    paragraphs: list[str] = Field(
         example=[
             "A matéria é o laço que prende o espírito; é o instrumento de que este se serve e sobre o qual, ao mesmo tempo, exerce sua ação."
         ]
     )
     authors: Optional[list[str]] = Field(
         example=["São Luís", "Santo Agostinho"], default=None
+    )
+
+
+# TODO: adapt routes to use this updated model (ref question 1009)
+class QuestionTextModel(BaseModel):
+    letter: Optional[str] = Field(example="a", default=None)
+    paragraphs: Optional[list[str]] = Field(
+        example=["Que definição podeis dar da matéria?"], default=None
+    )
+    answers: list[AnswerModel] = Field(
+        example=[
+            {
+                "paragraphs": [
+                    "A matéria é o laço que prende o espírito; é o instrumento de que este se serve e sobre o qual, ao mesmo tempo, exerce sua ação."
+                ],
+                "authors": ["São Luís", "Santo Agostinho"],
+            }
+        ]
     )
 
 
